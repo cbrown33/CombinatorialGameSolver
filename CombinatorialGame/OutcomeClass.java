@@ -1,3 +1,5 @@
+package CombinatorialGame;
+
 /**
  * Outcome classes of combinatorial game.
  * N is a next player win

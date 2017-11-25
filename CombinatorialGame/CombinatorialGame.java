@@ -1,3 +1,5 @@
+package CombinatorialGame;
+
 import java.util.HashSet;
 
 /**

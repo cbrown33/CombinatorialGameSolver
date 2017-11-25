@@ -1,8 +1,10 @@
+package CombinatorialGame;
+
 import java.util.HashSet;
 
 /**
- * The CombinatorialGameTree implementation.  Combinatorial Games can be solved
- * by implementing the CombinatorialGame interface in a representation of the game in Java.
+ * The CombinatorialGame.CombinatorialGameTree implementation.  Combinatorial Games can be solved
+ * by implementing the CombinatorialGame.CombinatorialGame interface in a representation of the game in Java.
  * Then, a call to the constructor will create and reduce the tree to one outcome class.
  * Then, a call to the getOutcomeClass will return the outcome class of the entire game.
  * @author Conor Brown
@@ -14,10 +16,10 @@ public class CombinatorialGameTree {
     private OutcomeClass treeClass;
 
     /**
-     * The only public method for the CombinatorialGameTree.  Takes in a CombinatorialGame and
+     * The only public method for the CombinatorialGame.CombinatorialGameTree.  Takes in a CombinatorialGame.CombinatorialGame and
      * creates all possible left moves and right moves for each game state, then reduces
      * them through outcome class reduction until one
-     * @param game A CombinatorialGame
+     * @param game A CombinatorialGame.CombinatorialGame
      */
     public CombinatorialGameTree(CombinatorialGame game){
         this.game = game;
@@ -103,7 +105,7 @@ public class CombinatorialGameTree {
     }
 
     /**
-     * toString for the entire CombinatorialGameTree
+     * toString for the entire CombinatorialGame.CombinatorialGameTree
      * useful foe debug purposes
      * @return the string representation of the entire tree
      */
@@ -124,7 +126,7 @@ public class CombinatorialGameTree {
 
     /**
      * gets the outcome class of the resolved tree
-     * @return an OutcomeClass
+     * @return an CombinatorialGame.OutcomeClass
      */
     public OutcomeClass getOutcomeClass() {
         return treeClass;
