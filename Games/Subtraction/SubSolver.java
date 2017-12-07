@@ -1,4 +1,5 @@
 package Games.Subtraction;
+import CombinatorialGame.*;
 
 public class SubSolver {
     public static void main(String[] args) {
