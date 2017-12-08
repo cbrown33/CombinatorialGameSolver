@@ -25,28 +25,28 @@ public class Diagonals implements CombinatorialGame {
     public HashSet<CombinatorialGame> getLeftMoves() {
         HashSet<CombinatorialGame> moves = new HashSet<>();
         HashSet<CombinatorialGame> captures = new HashSet<>();
-        for(int i = 0; i < board.length-1; i++){
-            for(int j = 0; j < board[0].length; j++){
+        for(int i = 0; i < board.length-1; i++){                // first dimension, vertical
+            for(int j = 0; j < board[0].length; j++){           // second dimension, horizontal
                 if (board[i][j] == pieceType.left){
-                    if (j > 0){
-                        if (board[i][j-1] == null) {
+                    if (j > 0){                                 // can we move left horizontally?
+                        if (board[i+1][j-1] == null) {            // non cap
                             Diagonals newBoard = new Diagonals(board);
-                            newBoard.movePiece(i, j, i+1, j-1);
+                            newBoard.movePiece(i, j, i+1, j-1);         // move up and left
                             moves.add(newBoard);
-                        } else if (board[i][j-1] == pieceType.right){
+                        } else if (board[i+1][j-1] == pieceType.right){              // capture
                             Diagonals newBoard = new Diagonals(board);
-                            newBoard.movePiece(i, j, i+1, j-1);
+                            newBoard.movePiece(i, j, i+1, j-1);         // move up and left with a cap
                             captures.add(newBoard);
                         }
                     }
-                    if (j < (board[0].length - 1)){
-                        if (board[i][j+1] == null) {
+                    if (j < (board[0].length - 1)){                 // can we move right?
+                        if (board[i+1][j+1] == null) {              // non cap
                             Diagonals newBoard = new Diagonals(board);
-                            newBoard.movePiece(i, j, i+1, j+1);
+                            newBoard.movePiece(i, j, i+1, j+1);         // move up and right
                             moves.add(newBoard);
-                        } else if (board[i][j+1] == pieceType.right){
+                        } else if (board[i+1][j+1] == pieceType.right){              // capture
                             Diagonals newBoard = new Diagonals(board);
-                            newBoard.movePiece(i, j, i+1, j+1);
+                            newBoard.movePiece(i, j, i+1, j+1);         // move up and right with a cap
                             captures.add(newBoard);
                         }
                     }
@@ -54,6 +54,7 @@ public class Diagonals implements CombinatorialGame {
             }
         }
         if (captures.isEmpty()){
+            // captures are mandatory, if they no not exist you can simply return list of normal moves
             return moves;
         }
         return captures;
@@ -63,28 +64,28 @@ public class Diagonals implements CombinatorialGame {
     public HashSet<CombinatorialGame> getRightMoves() {
         HashSet<CombinatorialGame> moves = new HashSet<>();
         HashSet<CombinatorialGame> captures = new HashSet<>();
-        for(int i = 1; i < board.length; i++){
-            for(int j = 0; j < board[0].length; j++){
+        for(int i = 1; i < board.length; i++){                  // first dimension, vertical
+            for(int j = 0; j < board[0].length; j++){           // second dimension, horizontal
                 if (board[i][j] == pieceType.right){
-                    if (j > 0){
-                        if (board[i][j+1] == null) {
+                    if (j > 0){                                 // can we move left?
+                        if (board[i-1][j-1] == null) {            // non capture
                             Diagonals newBoard = new Diagonals(board);
-                            newBoard.movePiece(i, j, i-1, j-1);
+                            newBoard.movePiece(i, j, i-1, j-1);             // move down and left
                             moves.add(newBoard);
-                        } else if (board[i][j-1] == pieceType.left){
+                        } else if (board[i-1][j-1] == pieceType.left){                  // capture
                             Diagonals newBoard = new Diagonals(board);
-                            newBoard.movePiece(i, j, i-1, j-1);
+                            newBoard.movePiece(i, j, i-1, j-1);             // move down and left with cap
                             captures.add(newBoard);
                         }
                     }
-                    if (j < (board[0].length - 1)){
-                        if (board[i][j+1] == null) {
+                    if (j < (board[0].length - 1)){             // can we move right?
+                        if (board[i-1][j+1] == null) {            // non cap
                             Diagonals newBoard = new Diagonals(board);
-                            newBoard.movePiece(i, j, i-1, j+1);
+                            newBoard.movePiece(i, j, i-1, j+1);             // move down and right
                             moves.add(newBoard);
-                        } else if (board[i][j+1] == pieceType.left){
+                        } else if (board[i-1][j+1] == pieceType.left){                    // capture
                             Diagonals newBoard = new Diagonals(board);
-                            newBoard.movePiece(i, j, i-1, j+1);
+                            newBoard.movePiece(i, j, i-1, j+1);             // move down and right with cap
                             captures.add(newBoard);
                         }
                     }
