@@ -104,4 +104,37 @@ public class Diagonals implements CombinatorialGame {
         board[destX][destY] = type;
     }
 
+    @Override
+    public int hashCode() {
+        int result = 37;
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j < board[0].length; j++){
+                if (board[i][j] == null){
+                    result = 37 * result + 7;
+                } else if (board[i][j] == pieceType.left) {
+                    result = 37 * result + 9;
+                } else if (board[i][j] == pieceType.right) {
+                    result = 37 * result + 11;
+                }
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Diagonals)) {
+            return false;
+        } else {
+            pieceType[][] compBoard = ((Diagonals) obj).board;
+            for(int i = 0; i < board.length; i++){
+                for(int j = 0; j < board[0].length; j++){
+                    if (board[i][j] != compBoard[i][j]){
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
 }

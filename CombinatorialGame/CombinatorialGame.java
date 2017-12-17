@@ -25,4 +25,19 @@ public interface CombinatorialGame {
      * @return a HashSet of left moves, moves do not need to be repeated
      */
     HashSet<CombinatorialGame> getRightMoves();
+
+    /**
+     * We need hashing for tree optimizations
+     * @return hashed value of the game state
+     */
+    @Override
+    int hashCode();
+
+    /**
+     * We need equals for hasing to be useful
+     * @param o object to compare to
+     * @return boolean truth of equality
+     */
+    @Override
+    boolean equals(Object o);
 }
